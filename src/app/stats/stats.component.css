@@ -1,0 +1,93 @@
+body {
+  color: white;
+}
+
+.search-button,
+select {
+  margin-top: 30px;
+  height: 40px;
+  width: 220px;
+}
+
+.scores-container {
+  border: 1px solid white;
+  color: black;
+}
+
+.data-container {
+  margin-top: 40px;
+  margin-left: 15px;
+}
+
+.date,
+.scores {
+  margin: 8px;
+  margin-left: 5px;
+  color: black;
+  width: 100%;
+}
+
+.date {
+  width: 50%;
+  max-width: 150px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-expansion-panel-header,
+.mat-expansion-panel {
+  background-color: #fff;
+  color: black !important;
+}
+
+.mat-expansion-panel-header-title {
+  max-width: 180px;
+}
+
+.date-span {
+  min-width: 180px !important;
+}
+
+.team-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.scores span {
+  margin-left: 10px;
+  min-width: 22px;
+}
+
+.scores {
+  min-width: 550px;
+}
+
+.scores .second-logo {
+  min-width: 80px;
+}
+
+.scores .first-team {
+  min-width: 180px;
+}
+
+.rivalry-summary {
+  height: auto;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.rivalry-summary .team-logo {
+  height: auto;
+  width: 40%;
+  margin-top: 60px;
+}
+
+.summary {
+  font-weight: 700;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}

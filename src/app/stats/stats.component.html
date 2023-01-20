@@ -1,0 +1,106 @@
+<div class="row container">
+  <div class="col-3 team-list">
+    <select
+      [(ngModel)]="firstSelectedTeam"
+      (ngModelChange)="foundFirstTeamIndex(firstSelectedTeam)"
+    >
+      <option
+        class="btn btn-secondary dropdown-toggle"
+        *ngFor="let firstTeam of nbaStatsService.nbaTeamsList"
+        [value]="firstTeam"
+      >
+        {{ firstTeam }}
+      </option>
+    </select>
+  </div>
+  <div class="col-3 team-list">
+    <select
+      [(ngModel)]="secondSelectedTeam"
+      (ngModelChange)="foundSecondTeamIndex(secondSelectedTeam)"
+    >
+      <option
+        class="btn btn-secondary dropdown-toggle"
+        *ngFor="let item of nbaStatsService.nbaTeamsList"
+        [value]="item"
+      >
+        {{ item }}
+      </option>
+    </select>
+  </div>
+  <div class="col-3 search-button">
+    <button type="button" class="btn btn-primary" (click)="findH2HMatches()">
+      Find matches
+    </button>
+  </div>
+</div>
+<div *ngIf="nbaStatsService.data" class="data-container">
+  <div class="d-flex justify-content-center">
+    <div
+      class="rivalry-summary col-6 container row d-flex justify-content-center"
+    >
+      <div class="col-6 first-team container">
+        <img
+          [src]="sortData[1].teams.home.logo"
+          alt="team logo"
+          class="team-logo"
+        />
+      </div>
+      <div class="col-6 second-team container">
+        <img
+          [src]="sortData[1].teams.visitors.logo"
+          alt="team logo"
+          class="team-logo"
+        />
+      </div>
+      <div class="row summary">
+        <div class="col-3 d-flex justify-content-end">{{this.nbaStatsService.gameSummary.firstTeamWins}}</div>
+        <div class="col-6 d-flex justify-content-center">Wins</div>
+        <div class="col-3">{{this.nbaStatsService.gameSummary.secondTeamWins}}</div>
+                <div class="col-3 d-flex justify-content-end">{{this.nbaStatsService.gameSummary.averagePointsFirstTeam}}</div>
+                <div class="col-6 d-flex justify-content-center">Points Avg</div>
+                <div class="col-3">{{this.nbaStatsService.gameSummary.averagePointsSecondTeam}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngFor="let item of sortData; index as i"
+    class="scores d-flex justify-content-center"
+  >
+    <mat-accordion *ngIf="sortData[i].status.long == 'Finished'">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="date d-flex align-items-center">
+              <span class="date-span">{{
+                sortData[i].date.start.toString() | slice : 0 : 10
+              }}</span>
+            </div>
+          </mat-panel-title>
+          <mat-panel-description>
+            <div class="col-6 scores d-flex align-items-center">
+              <span class="first-team"
+                >{{ sortData[i].teams.visitors.name }}
+              </span>
+              <img
+                [src]="sortData[i].teams.visitors.logo"
+                alt="team logo"
+                class="team-logo"
+              />
+              <span>{{ sortData[i].scores.visitors.points }}</span>
+              <span>{{ sortData[i].scores.home.points }}</span>
+              <span class="second-logo">
+                <img
+                  [src]="sortData[i].teams.home.logo"
+                  alt="team logo"
+                  class="team-logo"
+              /></span>
+              <span>{{ sortData[i].teams.home.name }}</span>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        {{ sortData[i].nugget }}
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

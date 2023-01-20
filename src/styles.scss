@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(29, 66, 138);
+  background: linear-gradient(
+    135deg,
+    rgba(29, 66, 138, 1) 9%,
+    rgba(200, 16, 46, 1) 54%,
+    rgba(255, 255, 255, 1) 81%
+  );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: white;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
